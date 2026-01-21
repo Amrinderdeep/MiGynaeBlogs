@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "196764354205",
+    "project_id": "migynaeblogs",
+    "storage_bucket": "migynaeblogs.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:196764354205:android:c2b8f0f7ebd4b1437fb674",
+        "android_client_info": {
+          "package_name": "com.example.migynaeblogs"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1NNA4-6VMR8AYNVyYzOTmcNx3pYYoCKs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
