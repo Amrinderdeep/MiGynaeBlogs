@@ -1,356 +1,602 @@
 {
   "blogs": {
-    "husband_semen_analysis": {
-      "title": "Husband Semen Analysis",
-      "description": "Complete guide on semen analysis testing for male fertility evaluation",
-      "publishedDate": "2026-01-20T10:00:00Z",
-      "readTimeMinutes": 5,
-      "authorName": "MiGynae Medical Team",
-      "authorImageUrl": "https://static.vecteezy.com/system/resources/thumbnails/026/375/249/small/ai-generative-portrait-of-confident-male-doctor-in-white-coat-and-stethoscope-standing-with-arms-crossed-and-looking-at-camera-photo.jpg",
-      "coverImageUrl": "https://drshwetashah.com/wp-content/uploads/2024/02/Know-All-About-Pregnancy-and-Prenatal-Care-1080x458.webp",
-      "tags": ["male-factor", "basic-test", "semen-analysis"],
+    "fertility-tests-guide": {
+      "title": "Complete Fertility & Infertility Testing Guide",
+      "description": "A comprehensive guide to fertility and infertility tests. Understanding the various diagnostic tests used to evaluate fertility.",
+      "publishedDate": "2026-01-15T10:00:00Z",
+      "readTimeMinutes": 15,
+      "authorName": "Dr. Jane Smith",
+      "authorImageUrl": "https://static.vecteezy.com/system/resources/thumbnails/026/375/249/small/ai-generative-portrait-of-confident-female-doctor-in-white-coat-and-stethoscope.jpg",
+      "coverImageUrl": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800",
       "contentBlocks": [
-        {"type": "heading", "content": "How to do"},
-        {"type": "bulletPoints", "bulletPoints": ["Semen sample collected by masturbation", "Sample is examined in a laboratory"]},
-        {"type": "heading", "content": "When to do"},
-        {"type": "bulletPoints", "bulletPoints": ["Morning or daytime", "After 3–5 days of sexual abstinence"]},
-        {"type": "heading", "content": "Who is this test for"},
-        {"type": "bulletPoints", "bulletPoints": ["Every infertile couple", "Male partner evaluation is mandatory from the beginning"]},
-        {"type": "heading", "content": "Precautions before giving sample"},
-        {"type": "bulletPoints", "bulletPoints": ["Abstinence strictly between 3–5 days", "Avoid fever, infection, alcohol, smoking for at least 3–5 days", "Sample should reach lab within 30–60 minutes, preferably give sample within the Hospital/Lab Premises"]},
-        {"type": "heading", "content": "Avoid If"},
-        {"type": "bulletPoints", "bulletPoints": ["Recent fever (last 2–3 weeks)", "Active genital infection", "Immediately after illness or surgery"]}
-      ]
-    },
-    "pelvic_ultrasound": {
-      "title": "Pelvic Ultrasound (Female Partner)",
-      "description": "Transvaginal and abdominal ultrasound for female fertility evaluation",
-      "publishedDate": "2026-01-20T10:15:00Z",
-      "readTimeMinutes": 6,
-      "authorName": "MiGynae Medical Team",
-      "authorImageUrl": "https://static.vecteezy.com/system/resources/thumbnails/026/375/249/small/ai-generative-portrait-of-confident-male-doctor-in-white-coat-and-stethoscope-standing-with-arms-crossed-and-looking-at-camera-photo.jpg",
-      "coverImageUrl": "https://drshwetashah.com/wp-content/uploads/2024/02/Know-All-About-Pregnancy-and-Prenatal-Care-1080x458.webp",
-      "tags": ["female-factor", "basic-test", "ultrasound"],
-      "contentBlocks": [
-        {"type": "heading", "content": "How is this test done (Mode)"},
-        {"type": "bulletPoints", "bulletPoints": ["Transvaginal ultrasound (preferred)", "Sometimes abdominal ultrasound"]},
-        {"type": "heading", "content": "When to do"},
-        {"type": "bulletPoints", "bulletPoints": ["Any time in the cycle / First visit with the doctor", "Ideally early cycle (Day 2–5) for baseline assessment / Antral Follicle Count", "Mid-cycle Scan (To look for Ovulation)"]},
-        {"type": "heading", "content": "Who is this test for"},
-        {"type": "bulletPoints", "bulletPoints": ["All women undergoing infertility evaluation"]},
-        {"type": "heading", "content": "Precautions"},
-        {"type": "bulletPoints", "bulletPoints": ["Empty bladder for transvaginal scan", "Full bladder for abdominal scan (if advised)"]},
-        {"type": "heading", "content": "When to avoid"},
-        {"type": "bulletPoints", "bulletPoints": ["Severe vaginal infection (temporary avoidance)", "Active Bleeding (Avoid Transvaginal Scan, opt for Transabdominal Scan)"]}
-      ]
-    },
-    "fsh_lh_test": {
-      "title": "FSH, LH (Follicle-Stimulating Hormone & Luteinizing Hormone)",
-      "description": "Blood tests to evaluate female reproductive hormones",
-      "publishedDate": "2026-01-20T10:30:00Z",
-      "readTimeMinutes": 5,
-      "authorName": "MiGynae Medical Team",
-      "authorImageUrl": "https://static.vecteezy.com/system/resources/thumbnails/026/375/249/small/ai-generative-portrait-of-confident-male-doctor-in-white-coat-and-stethoscope-standing-with-arms-crossed-and-looking-at-camera-photo.jpg",
-      "coverImageUrl": "https://drshwetashah.com/wp-content/uploads/2024/02/Know-All-About-Pregnancy-and-Prenatal-Care-1080x458.webp",
-      "tags": ["female-factor", "basic-test", "blood-test", "irregular-cycles"],
-      "contentBlocks": [
-        {"type": "heading", "content": "How to do"},
-        {"type": "bulletPoints", "bulletPoints": ["Blood test (serum sample)"]},
-        {"type": "heading", "content": "When to do"},
-        {"type": "bulletPoints", "bulletPoints": ["FSH & LH: Day 2 or Day 3 of cycle"]},
-        {"type": "heading", "content": "Who is this test for"},
-        {"type": "bulletPoints", "bulletPoints": ["Women with irregular cycles", "Delayed periods", "Anovulation", "Suspected hormonal issues"]},
-        {"type": "heading", "content": "Precautions"},
-        {"type": "bulletPoints", "bulletPoints": ["Preferably On Day 2-3 of periods or during Overdue", "No Hormone intake in Prior cycle"]},
-        {"type": "heading", "content": "Avoid if"},
-        {"type": "bulletPoints", "bulletPoints": ["Acute illness"]}
-      ]
-    },
-    "tsh_prolactin_test": {
-      "title": "TSH, Prolactin (Hormonal Blood Tests)",
-      "description": "Blood tests for thyroid and prolactin hormone levels",
-      "publishedDate": "2026-01-20T10:45:00Z",
-      "readTimeMinutes": 5,
-      "authorName": "MiGynae Medical Team",
-      "authorImageUrl": "https://static.vecteezy.com/system/resources/thumbnails/026/375/249/small/ai-generative-portrait-of-confident-male-doctor-in-white-coat-and-stethoscope-standing-with-arms-crossed-and-looking-at-camera-photo.jpg",
-      "coverImageUrl": "https://drshwetashah.com/wp-content/uploads/2024/02/Know-All-About-Pregnancy-and-Prenatal-Care-1080x458.webp",
-      "tags": ["female-factor", "basic-test", "blood-test", "hormonal-test"],
-      "contentBlocks": [
-        {"type": "heading", "content": "How is this test done (Mode)"},
-        {"type": "bulletPoints", "bulletPoints": ["Blood test (serum sample)"]},
-        {"type": "heading", "content": "When to do"},
-        {"type": "bulletPoints", "bulletPoints": ["TSH & Prolactin: Any day, preferably morning"]},
-        {"type": "heading", "content": "Who is this test for"},
-        {"type": "bulletPoints", "bulletPoints": ["Women with irregular cycles", "Delayed periods", "Anovulation", "Suspected thyroid or hormonal issues"]},
-        {"type": "heading", "content": "Precautions"},
-        {"type": "bulletPoints", "bulletPoints": ["Prolactin: Avoid stress, breast stimulation before test", "Prefer morning fasting sample if advised"]},
-        {"type": "heading", "content": "Avoid if"},
-        {"type": "bulletPoints", "bulletPoints": ["During acute illness", "Immediately after night duty or extreme stress (for prolactin)"]}
-      ]
-    },
-    "follicular_monitoring": {
-      "title": "Follicular Monitoring (Ovulation Study)",
-      "description": "Serial ultrasounds to track ovulation and follicle development",
-      "publishedDate": "2026-01-20T11:00:00Z",
-      "readTimeMinutes": 6,
-      "authorName": "MiGynae Medical Team",
-      "authorImageUrl": "https://static.vecteezy.com/system/resources/thumbnails/026/375/249/small/ai-generative-portrait-of-confident-male-doctor-in-white-coat-and-stethoscope-standing-with-arms-crossed-and-looking-at-camera-photo.jpg",
-      "coverImageUrl": "https://drshwetashah.com/wp-content/uploads/2024/02/Know-All-About-Pregnancy-and-Prenatal-Care-1080x458.webp",
-      "tags": ["female-factor", "basic-test", "ultrasound", "pcos", "irregular-cycles"],
-      "contentBlocks": [
-        {"type": "heading", "content": "How to do"},
-        {"type": "bulletPoints", "bulletPoints": ["Serial transvaginal ultrasounds"]},
-        {"type": "heading", "content": "When to do"},
-        {"type": "bulletPoints", "bulletPoints": ["Starting from Day 7–11 of cycle", "Repeated every 1–3 days till ovulation"]},
-        {"type": "heading", "content": "Who is this test for"},
-        {"type": "bulletPoints", "bulletPoints": ["Women with irregular cycles", "PCOS", "Unexplained infertility", "Planning timed intercourse or ovulation induction"]},
-        {"type": "heading", "content": "Precautions"},
-        {"type": "bulletPoints", "bulletPoints": ["Regular follow-up is important", "Do not miss scheduled scans"]},
-        {"type": "heading", "content": "Avoid if"},
-        {"type": "bulletPoints", "bulletPoints": ["Active pelvic infection", "Severe vaginal pain or bleeding"]}
-      ]
-    },
-    "amh_test": {
-      "title": "AMH Test (Anti-Müllerian Hormone - Ovarian Reserve Test)",
-      "description": "Blood test to assess ovarian reserve and fertility potential",
-      "publishedDate": "2026-01-20T11:15:00Z",
-      "readTimeMinutes": 5,
-      "authorName": "MiGynae Medical Team",
-      "authorImageUrl": "https://static.vecteezy.com/system/resources/thumbnails/026/375/249/small/ai-generative-portrait-of-confident-male-doctor-in-white-coat-and-stethoscope-standing-with-arms-crossed-and-looking-at-camera-photo.jpg",
-      "coverImageUrl": "https://drshwetashah.com/wp-content/uploads/2024/02/Know-All-About-Pregnancy-and-Prenatal-Care-1080x458.webp",
-      "tags": ["female-factor", "advanced-test", "blood-test", "ovarian-reserve"],
-      "contentBlocks": [
-        {"type": "heading", "content": "How to do"},
-        {"type": "bulletPoints", "bulletPoints": ["Blood test"]},
-        {"type": "heading", "content": "When to do"},
-        {"type": "bulletPoints", "bulletPoints": ["Any day of menstrual cycle", "Any time of day"]},
-        {"type": "heading", "content": "Who is this test for"},
-        {"type": "bulletPoints", "bulletPoints": ["Women above 30–32 years", "With delayed fertility plans", "Prior ovarian surgery", "Poor response to stimulation", "Endometriosis"]},
-        {"type": "heading", "content": "Precautions"},
-        {"type": "bulletPoints", "bulletPoints": ["No fasting required", "Inform doctor if on hormonal pills"]},
-        {"type": "heading", "content": "Avoid if"},
-        {"type": "bulletPoints", "bulletPoints": ["Not avoided usually", "AMH is one of the best tests to know about Ovarian Reserve and the Values DO NOT depend on cycle day or length"]}
-      ]
-    },
-    "hsg_test": {
-      "title": "HSG (Hysterosalpingography)",
-      "description": "X-ray test to evaluate uterine cavity and tubal patency",
-      "publishedDate": "2026-01-20T11:30:00Z",
-      "readTimeMinutes": 6,
-      "authorName": "MiGynae Medical Team",
-      "authorImageUrl": "https://static.vecteezy.com/system/resources/thumbnails/026/375/249/small/ai-generative-portrait-of-confident-male-doctor-in-white-coat-and-stethoscope-standing-with-arms-crossed-and-looking-at-camera-photo.jpg",
-      "coverImageUrl": "https://drshwetashah.com/wp-content/uploads/2024/02/Know-All-About-Pregnancy-and-Prenatal-Care-1080x458.webp",
-      "tags": ["female-factor", "advanced-test", "imaging", "tubal-factor"],
-      "contentBlocks": [
-        {"type": "heading", "content": "How to do"},
-        {"type": "bulletPoints", "bulletPoints": ["X-ray test is done", "Contrast dye is injected into uterus through cervix and X ray images are taken simultaneously"]},
-        {"type": "heading", "content": "When to do"},
-        {"type": "bulletPoints", "bulletPoints": ["Day 6–9 of menstrual cycle", "After periods but before ovulation"]},
-        {"type": "heading", "content": "Who is this test for"},
-        {"type": "bulletPoints", "bulletPoints": ["Women suspected of tubal blockage", "Pelvic infection history", "H/o prior Ectopic Pregnancy", "Endometriosis"]},
-        {"type": "heading", "content": "Precautions"},
-        {"type": "bulletPoints", "bulletPoints": ["Rule out pregnancy", "Take painkiller if advised", "Inform doctor about dye allergy", "Can be done under anaesthesia (On request)"]},
-        {"type": "heading", "content": "Avoid if"},
-        {"type": "bulletPoints", "bulletPoints": ["Active pelvic infection", "Pregnancy", "Heavy bleeding"]}
-      ]
-    },
-    "sonosalpingography": {
-      "title": "Sonosalpingography (SSG)",
-      "description": "Ultrasound with saline injection to assess tubal patency",
-      "publishedDate": "2026-01-20T11:45:00Z",
-      "readTimeMinutes": 5,
-      "authorName": "MiGynae Medical Team",
-      "authorImageUrl": "https://static.vecteezy.com/system/resources/thumbnails/026/375/249/small/ai-generative-portrait-of-confident-male-doctor-in-white-coat-and-stethoscope-standing-with-arms-crossed-and-looking-at-camera-photo.jpg",
-      "coverImageUrl": "https://drshwetashah.com/wp-content/uploads/2024/02/Know-All-About-Pregnancy-and-Prenatal-Care-1080x458.webp",
-      "tags": ["female-factor", "advanced-test", "ultrasound", "tubal-factor"],
-      "contentBlocks": [
-        {"type": "heading", "content": "How to do"},
-        {"type": "bulletPoints", "bulletPoints": ["Ultrasound done with saline injection into uterus", "Tubes usually not seen by ultrasound are usually seen when saline is pushed through cervix"]},
-        {"type": "heading", "content": "When to do"},
-        {"type": "bulletPoints", "bulletPoints": ["Day 6–9 of cycle"]},
-        {"type": "heading", "content": "Who is this test for"},
-        {"type": "bulletPoints", "bulletPoints": ["Women needing tubal patency check", "Alternative to HSG"]},
-        {"type": "heading", "content": "Precautions"},
-        {"type": "bulletPoints", "bulletPoints": ["Mild pain or spotting can occur", "Take prescribed antibiotics if advised"]},
-        {"type": "heading", "content": "Avoid if"},
-        {"type": "bulletPoints", "bulletPoints": ["Active infection", "Pregnancy"]}
-      ]
-    },
-    "hysteroscopy": {
-      "title": "Hysteroscopy",
-      "description": "Minimally invasive procedure to visualize and treat uterine cavity",
-      "publishedDate": "2026-01-20T12:00:00Z",
-      "readTimeMinutes": 6,
-      "authorName": "MiGynae Medical Team",
-      "authorImageUrl": "https://static.vecteezy.com/system/resources/thumbnails/026/375/249/small/ai-generative-portrait-of-confident-male-doctor-in-white-coat-and-stethoscope-standing-with-arms-crossed-and-looking-at-camera-photo.jpg",
-      "coverImageUrl": "https://drshwetashah.com/wp-content/uploads/2024/02/Know-All-About-Pregnancy-and-Prenatal-Care-1080x458.webp",
-      "tags": ["female-factor", "advanced-test", "invasive-procedure", "uterine-factor"],
-      "contentBlocks": [
-        {"type": "heading", "content": "How to do"},
-        {"type": "bulletPoints", "bulletPoints": ["Camera inserted into uterus", "Uterus Cavity Checked and Cornua seen", "Can be done to remove Poly / Fibroids", "Day-care procedure"]},
-        {"type": "heading", "content": "When to do"},
-        {"type": "bulletPoints", "bulletPoints": ["Early proliferative phase (Day 7–10)"]},
-        {"type": "heading", "content": "Who is this test for"},
-        {"type": "bulletPoints", "bulletPoints": ["Women with repeated IVF failure", "Abnormal ultrasound", "Recurrent pregnancy loss", "Submucosal Polyp / Fibroid or septum"]},
-        {"type": "heading", "content": "Precautions"},
-        {"type": "bulletPoints", "bulletPoints": ["Pre-procedure evaluation required", "Fasting if anesthesia planned"]},
-        {"type": "heading", "content": "Avoid if"},
-        {"type": "bulletPoints", "bulletPoints": ["Active pelvic infection", "Pregnancy"]}
-      ]
-    },
-    "laparoscopy": {
-      "title": "Laparoscopy",
-      "description": "Minimally invasive keyhole surgery to diagnose and treat pelvic conditions",
-      "publishedDate": "2026-01-20T12:15:00Z",
-      "readTimeMinutes": 7,
-      "authorName": "MiGynae Medical Team",
-      "authorImageUrl": "https://static.vecteezy.com/system/resources/thumbnails/026/375/249/small/ai-generative-portrait-of-confident-male-doctor-in-white-coat-and-stethoscope-standing-with-arms-crossed-and-looking-at-camera-photo.jpg",
-      "coverImageUrl": "https://drshwetashah.com/wp-content/uploads/2024/02/Know-All-About-Pregnancy-and-Prenatal-Care-1080x458.webp",
-      "tags": ["female-factor", "advanced-test", "invasive-procedure", "endometriosis"],
-      "contentBlocks": [
-        {"type": "heading", "content": "How to do"},
-        {"type": "bulletPoints", "bulletPoints": ["Keyhole surgery under anesthesia", "A small 1 cm cut is made near Umbilicus, and camera put in the abdomen", "This allows doctor to see outside surface of uterus, tubes and ovaries", "Also therapeutic surgery in case of Tubal Block, Ovarian cyst, non-responding PCOD, Endometriosis, etc."]},
-        {"type": "heading", "content": "When to do"},
-        {"type": "bulletPoints", "bulletPoints": ["Planned after basic tests, when there is unexplained infertility", "Usually post-menstrual phase"]},
-        {"type": "heading", "content": "Who is this test for"},
-        {"type": "bulletPoints", "bulletPoints": ["Suspected endometriosis", "Tubal disease", "Unexplained infertility", "Ovarian cyst", "Non-responding PCOD", "Fibroids removal"]},
-        {"type": "heading", "content": "Precautions"},
-        {"type": "bulletPoints", "bulletPoints": ["Pre-anesthesia fitness", "Fasting required"]},
-        {"type": "heading", "content": "When to avoid"},
-        {"type": "bulletPoints", "bulletPoints": ["Uncontrolled medical illness", "Active infection"]}
-      ]
-    },
-    "sperm_dna_fragmentation": {
-      "title": "Sperm DNA Fragmentation",
-      "description": "Test to assess DNA integrity in sperm cells for male factor infertility",
-      "publishedDate": "2026-01-20T12:30:00Z",
-      "readTimeMinutes": 5,
-      "authorName": "MiGynae Medical Team",
-      "authorImageUrl": "https://static.vecteezy.com/system/resources/thumbnails/026/375/249/small/ai-generative-portrait-of-confident-male-doctor-in-white-coat-and-stethoscope-standing-with-arms-crossed-and-looking-at-camera-photo.jpg",
-      "coverImageUrl": "https://drshwetashah.com/wp-content/uploads/2024/02/Know-All-About-Pregnancy-and-Prenatal-Care-1080x458.webp",
-      "tags": ["male-factor", "advanced-test", "blood-test"],
-      "contentBlocks": [
-        {"type": "heading", "content": "How is this test done (Mode)"},
-        {"type": "bulletPoints", "bulletPoints": ["Semen test / Blood test (as applicable)"]},
-        {"type": "heading", "content": "When to do"},
-        {"type": "bulletPoints", "bulletPoints": ["As advised by fertility specialist"]},
-        {"type": "heading", "content": "Who is this test for"},
-        {"type": "bulletPoints", "bulletPoints": ["Severe male factor infertility", "Repeated IVF failure", "Poor embryo quality", "Recurrent Pregnancy Loss", "When the semen parameters specially morphology is poor"]},
-        {"type": "heading", "content": "Precautions"},
-        {"type": "bulletPoints", "bulletPoints": ["Abstinence as advised", "Avoid fever or illness before testing"]},
-        {"type": "heading", "content": "When to avoid"},
-        {"type": "bulletPoints", "bulletPoints": ["Acute illness", "Recent high fever"]}
-      ]
-    },
-    "male_hormonal_tests": {
-      "title": "Male Hormonal Tests",
-      "description": "Blood tests to evaluate male reproductive hormones",
-      "publishedDate": "2026-01-20T12:45:00Z",
-      "readTimeMinutes": 5,
-      "authorName": "MiGynae Medical Team",
-      "authorImageUrl": "https://static.vecteezy.com/system/resources/thumbnails/026/375/249/small/ai-generative-portrait-of-confident-male-doctor-in-white-coat-and-stethoscope-standing-with-arms-crossed-and-looking-at-camera-photo.jpg",
-      "coverImageUrl": "https://drshwetashah.com/wp-content/uploads/2024/02/Know-All-About-Pregnancy-and-Prenatal-Care-1080x458.webp",
-      "tags": ["male-factor", "basic-test", "blood-test", "hormonal-test"],
-      "contentBlocks": [
-        {"type": "heading", "content": "How to do"},
-        {"type": "bulletPoints", "bulletPoints": ["Blood test (serum sample)", "Includes Testosterone, FSH, LH, Prolactin (sometimes TSH)"]},
-        {"type": "heading", "content": "When to do"},
-        {"type": "bulletPoints", "bulletPoints": ["Morning sample preferred (especially for testosterone)", "Any day; no relation to female cycle"]},
-        {"type": "heading", "content": "Who is this test for"},
-        {"type": "bulletPoints", "bulletPoints": ["Men with low sperm count or azoospermia", "Erectile or libido issues", "Small testicular size", "Suspected hormonal imbalance or very low sperm count"]},
-        {"type": "heading", "content": "Precautions before giving sample"},
-        {"type": "bulletPoints", "bulletPoints": ["Prefer morning fasting sample if advised", "Avoid heavy exercise and stress before test", "Inform doctor about steroid or hormonal medications"]},
-        {"type": "heading", "content": "Avoid if"},
-        {"type": "bulletPoints", "bulletPoints": ["During acute illness or fever", "Immediately after night shifts or sleep deprivation"]}
-      ]
-    },
-    "scrotal_ultrasound": {
-      "title": "Scrotal Ultrasound",
-      "description": "Ultrasound imaging of the testes and scrotum for male factor evaluation",
-      "publishedDate": "2026-01-20T13:00:00Z",
-      "readTimeMinutes": 4,
-      "authorName": "MiGynae Medical Team",
-      "authorImageUrl": "https://static.vecteezy.com/system/resources/thumbnails/026/375/249/small/ai-generative-portrait-of-confident-male-doctor-in-white-coat-and-stethoscope-standing-with-arms-crossed-and-looking-at-camera-photo.jpg",
-      "coverImageUrl": "https://drshwetashah.com/wp-content/uploads/2024/02/Know-All-About-Pregnancy-and-Prenatal-Care-1080x458.webp",
-      "tags": ["male-factor", "basic-test", "ultrasound"],
-      "contentBlocks": [
-        {"type": "heading", "content": "How to do"},
-        {"type": "bulletPoints", "bulletPoints": ["Ultrasound scan of testes and scrotum"]},
-        {"type": "heading", "content": "When to do"},
-        {"type": "bulletPoints", "bulletPoints": ["Any time of day", "No cycle or fasting requirement"]},
-        {"type": "heading", "content": "Who is this test for"},
-        {"type": "bulletPoints", "bulletPoints": ["Men with low sperm count", "Suspected varicocele", "Testicular pain or swelling", "Absent sperm in semen analysis"]},
-        {"type": "heading", "content": "Precautions"},
-        {"type": "bulletPoints", "bulletPoints": ["No special preparation needed", "Wear comfortable clothing"]},
-        {"type": "heading", "content": "When to avoid"},
-        {"type": "bulletPoints", "bulletPoints": ["Not avoided usually", "Can be postponed if there is acute scrotal infection causing pain"]}
-      ]
-    },
-    "urine_routine_examination": {
-      "title": "Urine Routine Examination",
-      "description": "Routine urinalysis for general health and infection screening",
-      "publishedDate": "2026-01-20T13:15:00Z",
-      "readTimeMinutes": 3,
-      "authorName": "MiGynae Medical Team",
-      "authorImageUrl": "https://static.vecteezy.com/system/resources/thumbnails/026/375/249/small/ai-generative-portrait-of-confident-male-doctor-in-white-coat-and-stethoscope-standing-with-arms-crossed-and-looking-at-camera-photo.jpg",
-      "coverImageUrl": "https://drshwetashah.com/wp-content/uploads/2024/02/Know-All-About-Pregnancy-and-Prenatal-Care-1080x458.webp",
-      "tags": ["basic-test", "both", "infection-screening"],
-      "contentBlocks": [
-        {"type": "heading", "content": "How is this test done (Mode)"},
-        {"type": "bulletPoints", "bulletPoints": ["Mid-stream urine sample"]},
-        {"type": "heading", "content": "When to do"},
-        {"type": "bulletPoints", "bulletPoints": ["Morning sample preferred", "Any day of cycle"]},
-        {"type": "heading", "content": "Who is this test for"},
-        {"type": "bulletPoints", "bulletPoints": ["Both partners if indicated", "Women with recurrent urinary infections", "Burning urination", "Before invasive fertility procedures"]},
-        {"type": "heading", "content": "Precautions"},
-        {"type": "bulletPoints", "bulletPoints": ["Clean genital area before sample collection", "Avoid collecting first urine stream"]},
-        {"type": "heading", "content": "When to avoid"},
-        {"type": "bulletPoints", "bulletPoints": ["During active menstrual bleeding", "Sample should be repeated if contaminated"]}
-      ]
-    },
-    "vaginal_swab_test": {
-      "title": "Vaginal Swab Test",
-      "description": "Culture and sensitivity test to detect vaginal and cervical infections",
-      "publishedDate": "2026-01-20T13:30:00Z",
-      "readTimeMinutes": 4,
-      "authorName": "MiGynae Medical Team",
-      "authorImageUrl": "https://static.vecteezy.com/system/resources/thumbnails/026/375/249/small/ai-generative-portrait-of-confident-male-doctor-in-white-coat-and-stethoscope-standing-with-arms-crossed-and-looking-at-camera-photo.jpg",
-      "coverImageUrl": "https://drshwetashah.com/wp-content/uploads/2024/02/Know-All-About-Pregnancy-and-Prenatal-Care-1080x458.webp",
-      "tags": ["female-factor", "basic-test", "infection-screening"],
-      "contentBlocks": [
-        {"type": "heading", "content": "How to do test"},
-        {"type": "bulletPoints", "bulletPoints": ["Swab taken from vagina or cervix", "Sent for culture or infection testing"]},
-        {"type": "heading", "content": "When to do"},
-        {"type": "bulletPoints", "bulletPoints": ["Any day except during menstruation"]},
-        {"type": "heading", "content": "Who is this test for"},
-        {"type": "bulletPoints", "bulletPoints": ["Women with excessive or foul-smelling discharge", "Recurrent infections", "Prior failed IVF or embryo transfer", "Pelvic infection history"]},
-        {"type": "heading", "content": "Precautions"},
-        {"type": "bulletPoints", "bulletPoints": ["Avoid intercourse, vaginal creams, or douching 24–48 hours before test", "Do not self-medicate before sample"]},
-        {"type": "heading", "content": "When to avoid"},
-        {"type": "bulletPoints", "bulletPoints": ["During active menstrual bleeding", "Immediately after vaginal medications"]}
-      ]
-    },
-    "blood_sugar_testing": {
-      "title": "Blood Sugar Testing (Fasting / HbA1c)",
-      "description": "Tests to screen for diabetes and metabolic disorders affecting fertility",
-      "publishedDate": "2026-01-20T13:45:00Z",
-      "readTimeMinutes": 4,
-      "authorName": "MiGynae Medical Team",
-      "authorImageUrl": "https://static.vecteezy.com/system/resources/thumbnails/026/375/249/small/ai-generative-portrait-of-confident-male-doctor-in-white-coat-and-stethoscope-standing-with-arms-crossed-and-looking-at-camera-photo.jpg",
-      "coverImageUrl": "https://drshwetashah.com/wp-content/uploads/2024/02/Know-All-About-Pregnancy-and-Prenatal-Care-1080x458.webp",
-      "tags": ["female-factor", "basic-test", "blood-test", "pcos"],
-      "contentBlocks": [
-        {"type": "heading", "content": "How is this test done (Mode)"},
-        {"type": "bulletPoints", "bulletPoints": ["Blood test", "Fasting sugar / Post-meal sugar / HbA1c"]},
-        {"type": "heading", "content": "When to do"},
-        {"type": "bulletPoints", "bulletPoints": ["Fasting sugar: Morning after 8–10 hours fasting", "HbA1c: Any time of day"]},
-        {"type": "heading", "content": "Who is this test for"},
-        {"type": "bulletPoints", "bulletPoints": ["Women with PCOS", "Irregular periods", "Obesity", "Family history of diabetes", "Also advised before fertility treatments"]},
-        {"type": "heading", "content": "Precautions"},
-        {"type": "bulletPoints", "bulletPoints": ["Proper fasting if fasting sugar is advised", "Avoid sugary intake night before"]},
-        {"type": "heading", "content": "When to avoid"},
-        {"type": "bulletPoints", "bulletPoints": ["During acute illness or infection (may alter values)"]}
-      ]
+        {
+          "type": "heading",
+          "title": "Husband Semen Analysis",
+          "icon": "science",
+          "content": "Essential male fertility test",
+          "testDetails": {
+            "howToDo": [
+              "Sample is collected through masturbation into a sterile container",
+              "Collection is usually done at the fertility clinic laboratory",
+              "Can be collected at home if clinic is nearby and time constraints are considered",
+              "Abstinence of 2-7 days is recommended before the test"
+            ],
+            "whenToDo": [
+              "First test in male factor investigation",
+              "After 2-3 days of abstinence",
+              "If abnormal, repeat test after 2-3 weeks",
+              "Part of routine fertility workup"
+            ],
+            "whoIsThisTestFor": [
+              "All couples with infertility",
+              "Men with ejaculation problems",
+              "Men with testicular injury or surgery history",
+              "Partners of women with unexplained infertility"
+            ],
+            "precautions": [
+              "Maintain proper abstinence period",
+              "Avoid temperature extremes to the sample",
+              "Do not use lubricants during collection",
+              "Keep sample at body temperature"
+            ],
+            "avoidIf": [
+              "Active infection or fever",
+              "Recent chemotherapy (wait 3 months)",
+              "Recent high fever (wait 3 months for sperm regeneration)"
+            ]
+          }
+        },
+        {
+          "type": "heading",
+          "title": "Pelvic Ultrasound",
+          "icon": "healing",
+          "content": "Visualization of reproductive organs",
+          "testDetails": {
+            "howToDo": [
+              "Transabdominal ultrasound performed over the lower abdomen",
+              "Full bladder required for better visualization",
+              "Transvaginal probe may be used for detailed uterine view",
+              "Takes 15-30 minutes",
+              "Non-invasive and painless procedure"
+            ],
+            "whenToDo": [
+              "Early follicular phase (Day 3-5) for baseline assessment",
+              "Mid-cycle to monitor ovulation",
+              "Before IUI or IVF cycles",
+              "To evaluate abnormal findings"
+            ],
+            "whoIsThisTestFor": [
+              "All infertile couples",
+              "Women with irregular periods",
+              "Women with pelvic pain",
+              "Those with suspected fibroids or cysts"
+            ],
+            "precautions": [
+              "Full bladder for transabdominal ultrasound",
+              "Empty bladder for transvaginal ultrasound",
+              "Avoid during menstrual flow for transvaginal scan",
+              "Inform technician of any allergies or sensitivities"
+            ],
+            "avoidIf": [
+              "Recent vaginal infection (for transvaginal approach)",
+              "Acute pelvic pain without diagnosis"
+            ]
+          }
+        },
+        {
+          "type": "heading",
+          "title": "FSH & LH",
+          "icon": "science",
+          "content": "Hormone level assessment",
+          "testDetails": {
+            "howToDo": [
+              "Blood test collected on Day 3 of menstrual cycle",
+              "Single vein puncture for sample collection",
+              "Results available in 2-3 days",
+              "Early morning collection preferred"
+            ],
+            "whenToDo": [
+              "Day 2-5 of menstrual cycle (follicular phase)",
+              "Part of baseline fertility assessment",
+              "To evaluate ovarian reserve",
+              "Before starting fertility treatment"
+            ],
+            "whoIsThisTestFor": [
+              "All women with infertility",
+              "Women over 35 years old",
+              "Women with irregular periods",
+              "Those with suspected low ovarian reserve"
+            ],
+            "precautions": [
+              "Timing is critical - must be done in early follicular phase",
+              "Fast not required but early morning is better",
+              "Avoid strenuous exercise before test"
+            ],
+            "avoidIf": [
+              "During menstruation",
+              "After ovulation (timing will be wrong)"
+            ]
+          }
+        },
+        {
+          "type": "heading",
+          "title": "TSH & Prolactin",
+          "icon": "science",
+          "content": "Thyroid and prolactin evaluation",
+          "testDetails": {
+            "howToDo": [
+              "Blood test requiring single vein puncture",
+              "Can be done any day of the cycle",
+              "Fasting not required",
+              "Results available in 2-3 days"
+            ],
+            "whenToDo": [
+              "Part of routine fertility workup",
+              "For women with irregular cycles",
+              "When recurrent miscarriage is suspected",
+              "Before starting any fertility treatment"
+            ],
+            "whoIsThisTestFor": [
+              "All infertile women",
+              "Women with galactorrhea (breast discharge)",
+              "Women with irregular or absent periods",
+              "Those with history of miscarriage"
+            ],
+            "precautions": [
+              "Avoid stress before test",
+              "Ensure adequate sleep the night before",
+              "Avoid excessive exercise"
+            ],
+            "avoidIf": [
+              "During acute illness or stress",
+              "Immediately after vigorous exercise"
+            ]
+          }
+        },
+        {
+          "type": "heading",
+          "title": "Follicular Monitoring",
+          "icon": "visibility",
+          "content": "Ovulation tracking via ultrasound",
+          "testDetails": {
+            "howToDo": [
+              "Transvaginal ultrasound performed on Day 10-12 of cycle",
+              "Repeated every 2-3 days until ovulation",
+              "Tracks follicle growth and endometrial thickness",
+              "Confirms ovulation occurrence",
+              "5-10 minute procedure each visit"
+            ],
+            "whenToDo": [
+              "During treatment cycles (IUI, IVF, or ovulation induction)",
+              "To confirm ovulation in unexplained infertility",
+              "To time intercourse appropriately",
+              "Monthly for at least 2-3 cycles"
+            ],
+            "whoIsThisTestFor": [
+              "Women undergoing fertility treatment",
+              "Those with ovulation problems",
+              "Couples using timed intercourse",
+              "Women with irregular ovulation"
+            ],
+            "precautions": [
+              "Keep all scheduled appointments",
+              "Empty bladder before transvaginal scan",
+              "Report any pain or unusual symptoms",
+              "Coordinate with trigger injection timing"
+            ],
+            "avoidIf": [
+              "During active infection",
+              "When patient is unable to comply with frequent visits"
+            ]
+          }
+        },
+        {
+          "type": "heading",
+          "title": "AMH",
+          "icon": "science",
+          "content": "Ovarian reserve assessment",
+          "testDetails": {
+            "howToDo": [
+              "Blood test requiring single vein puncture",
+              "Can be done any day of menstrual cycle",
+              "Results available in 3-5 days",
+              "Reflects number of eggs remaining in ovaries"
+            ],
+            "whenToDo": [
+              "During initial fertility assessment",
+              "Before IVF treatment",
+              "To assess ovarian reserve",
+              "For women over 35 or with family history"
+            ],
+            "whoIsThisTestFor": [
+              "Women with suspected diminished ovarian reserve",
+              "Those with irregular periods",
+              "Women over 35 planning pregnancy",
+              "Before any assisted reproduction"
+            ],
+            "precautions": [
+              "No fasting required",
+              "Can be done any time of day",
+              "No special preparation needed"
+            ],
+            "avoidIf": [
+              "None - can be done anytime"
+            ]
+          }
+        },
+        {
+          "type": "heading",
+          "title": "HSG",
+          "icon": "healing",
+          "content": "X-ray visualization of fallopian tubes",
+          "testDetails": {
+            "howToDo": [
+              "X-ray procedure with contrast dye injection through cervix",
+              "Performed in radiology department",
+              "Takes 15-30 minutes",
+              "Patient awake during procedure",
+              "Can cause mild to moderate cramping"
+            ],
+            "whenToDo": [
+              "Day 7-12 of menstrual cycle",
+              "After menstruation ends, before ovulation",
+              "Not required if tubes can be visualized by ultrasound",
+              "As part of routine infertility workup"
+            ],
+            "whoIsThisTestFor": [
+              "All women with infertility",
+              "Those with suspected blocked tubes",
+              "Women with history of pelvic infection",
+              "Before IVF treatment"
+            ],
+            "precautions": [
+              "Negative pregnancy test required",
+              "No intercourse 2-3 days before test",
+              "Take pain medication 30 minutes before",
+              "Avoid during menstruation",
+              "Use contraception after test until confirmed non-pregnant"
+            ],
+            "avoidIf": [
+              "During menstruation",
+              "If patient is pregnant or might be pregnant",
+              "Active pelvic infection",
+              "Allergy to contrast dye"
+            ]
+          }
+        },
+        {
+          "type": "heading",
+          "title": "Sonosalpingography",
+          "icon": "healing",
+          "content": "Ultrasound visualization of tubes",
+          "testDetails": {
+            "howToDo": [
+              "Ultrasound procedure with saline solution injected through cervix",
+              "Transvaginal ultrasound with fluid injection",
+              "Performed in fertility clinic",
+              "Takes 20-30 minutes",
+              "Less radiation exposure than HSG"
+            ],
+            "whenToDo": [
+              "Day 7-12 of menstrual cycle",
+              "After menstruation, before ovulation",
+              "Can be repeated if needed",
+              "Alternative to HSG"
+            ],
+            "whoIsThisTestFor": [
+              "Women with suspected blocked tubes",
+              "Those wanting to avoid radiation",
+              "Patients with contrast dye allergy",
+              "Those needing detailed tubal assessment"
+            ],
+            "precautions": [
+              "Negative pregnancy test required",
+              "No intercourse 2-3 days before",
+              "Empty bladder before procedure",
+              "Mild cramping expected"
+            ],
+            "avoidIf": [
+              "During menstruation",
+              "If pregnant or might be pregnant",
+              "Active pelvic infection"
+            ]
+          }
+        },
+        {
+          "type": "heading",
+          "title": "Hysteroscopy",
+          "icon": "visibility",
+          "content": "Direct uterine cavity visualization",
+          "testDetails": {
+            "howToDo": [
+              "Procedure using thin telescope inserted through cervix",
+              "Allows direct visualization of uterine cavity",
+              "Can be diagnostic or operative",
+              "Usually performed under local or general anesthesia",
+              "Takes 15-30 minutes"
+            ],
+            "whenToDo": [
+              "Day 7-12 of menstrual cycle",
+              "When abnormalities seen on ultrasound",
+              "To remove fibroids or polyps",
+              "For recurrent miscarriage investigation"
+            ],
+            "whoIsThisTestFor": [
+              "Women with abnormal ultrasound findings",
+              "Those with recurrent miscarriage",
+              "Patients with abnormal bleeding",
+              "Before IVF if any cavity abnormality suspected"
+            ],
+            "precautions": [
+              "Negative pregnancy test required",
+              "Arrange for someone to drive you home",
+              "Take prescribed antibiotics",
+              "Avoid intercourse for 1 week after"
+            ],
+            "avoidIf": [
+              "During menstruation",
+              "If pregnant or might be pregnant",
+              "Active infection",
+              "Unexplained vaginal bleeding"
+            ]
+          }
+        },
+        {
+          "type": "heading",
+          "title": "Laparoscopy",
+          "icon": "visibility",
+          "content": "Minimally invasive pelvic examination",
+          "testDetails": {
+            "howToDo": [
+              "Minimally invasive surgery with thin telescope through belly button",
+              "Allows visualization of uterus, tubes, and ovaries",
+              "Usually requires general anesthesia",
+              "Takes 30-60 minutes",
+              "May have treatment capability (adhesions, endometriosis removal)"
+            ],
+            "whenToDo": [
+              "When other tests are inconclusive",
+              "For suspected endometriosis",
+              "For suspected adhesions",
+              "When cause of infertility remains unknown"
+            ],
+            "whoIsThisTestFor": [
+              "Women with chronic pelvic pain",
+              "Suspected endometriosis",
+              "Suspected pelvic adhesions",
+              "Unexplained infertility after other tests"
+            ],
+            "precautions": [
+              "NPO (nothing by mouth) for 6-8 hours before",
+              "Arrange for someone to drive you home",
+              "Take prescribed antibiotics",
+              "Avoid intercourse for 2-3 weeks",
+              "Resume light activities after 1 week"
+            ],
+            "avoidIf": [
+              "During menstruation",
+              "If pregnant or might be pregnant",
+              "Untreated infection",
+              "Severe adhesions expected"
+            ]
+          }
+        },
+        {
+          "type": "heading",
+          "title": "Sperm DNA Fragmentation Test",
+          "icon": "science",
+          "content": "Advanced sperm DNA analysis",
+          "testDetails": {
+            "howToDo": [
+              "Semen sample collected through masturbation",
+              "Special processing to assess DNA integrity",
+              "Advanced laboratory test",
+              "Results available in 5-7 days"
+            ],
+            "whenToDo": [
+              "When routine semen analysis is abnormal",
+              "For men over 40 years",
+              "With history of environmental exposure",
+              "Recurrent miscarriages with normal semen analysis"
+            ],
+            "whoIsThisTestFor": [
+              "Men with abnormal semen parameters",
+              "Those with high-heat exposure jobs",
+              "Smokers or heavy alcohol users",
+              "Couples with recurrent miscarriage"
+            ],
+            "precautions": [
+              "Maintain 2-7 days abstinence",
+              "Avoid high heat exposure 3 months before",
+              "Stop smoking and limit alcohol",
+              "Avoid environmental toxins"
+            ],
+            "avoidIf": [
+              "Recent high fever",
+              "Recent chemotherapy",
+              "Active testicular infection"
+            ]
+          }
+        },
+        {
+          "type": "heading",
+          "title": "Male Hormonal Tests",
+          "icon": "science",
+          "content": "Comprehensive male hormone evaluation",
+          "testDetails": {
+            "howToDo": [
+              "Blood test requiring single vein puncture",
+              "Early morning collection preferred",
+              "Fasting not required",
+              "Results available in 2-3 days"
+            ],
+            "whenToDo": [
+              "When semen analysis is abnormal",
+              "For men with erectile dysfunction",
+              "Suspected hormone deficiency",
+              "As part of male fertility workup"
+            ],
+            "whoIsThisTestFor": [
+              "Men with low sperm count or motility",
+              "Those with erectile dysfunction",
+              "Men with testicular disorders",
+              "Any male factor infertility"
+            ],
+            "precautions": [
+              "Early morning collection (7-9 AM)",
+              "Avoid stress before test",
+              "Get adequate sleep night before",
+              "Avoid strenuous exercise"
+            ],
+            "avoidIf": [
+              "During acute illness",
+              "After strenuous exercise",
+              "High stress period"
+            ]
+          }
+        },
+        {
+          "type": "heading",
+          "title": "Scrotal Ultrasound",
+          "icon": "healing",
+          "content": "Testicular structure visualization",
+          "testDetails": {
+            "howToDo": [
+              "Ultrasound gel applied to scrotum",
+              "High-frequency sound waves used to visualize testicular structures",
+              "Non-invasive, painless procedure",
+              "Takes 15-30 minutes",
+              "Patient comfortable during scan"
+            ],
+            "whenToDo": [
+              "When semen analysis is abnormal",
+              "For suspected varicocele",
+              "When testicular mass is palpated",
+              "For testicular torsion history"
+            ],
+            "whoIsThisTestFor": [
+              "Men with abnormal semen parameters",
+              "Those with palpable testicular abnormality",
+              "Suspected varicocele",
+              "Testicular pain or swelling"
+            ],
+            "precautions": [
+              "Wear loose, comfortable clothing",
+              "No special preparation required",
+              "Inform technician of any concerns"
+            ],
+            "avoidIf": [
+              "During acute pain without diagnosis"
+            ]
+          }
+        },
+        {
+          "type": "heading",
+          "title": "Urine Routine Test",
+          "icon": "assignment",
+          "content": "Basic urine analysis",
+          "testDetails": {
+            "howToDo": [
+              "Urine sample collected in sterile container",
+              "Mid-stream sample collection preferred",
+              "Laboratory analysis for various parameters",
+              "Results available in 1-2 days"
+            ],
+            "whenToDo": [
+              "As part of routine fertility assessment",
+              "When infection is suspected",
+              "Preoperative requirement",
+              "To rule out systemic disease"
+            ],
+            "whoIsThisTestFor": [
+              "All couples undergoing fertility evaluation",
+              "Those with urinary symptoms",
+              "Before surgical procedures",
+              "To assess overall health status"
+            ],
+            "precautions": [
+              "Collect mid-stream sample",
+              "Use sterile container",
+              "No contamination with toilet paper"
+            ],
+            "avoidIf": [
+              "None - routine test"
+            ]
+          }
+        },
+        {
+          "type": "heading",
+          "title": "Vaginal Swab & Culture",
+          "icon": "assignment",
+          "content": "Infection screening test",
+          "testDetails": {
+            "howToDo": [
+              "Swab gently inserted into vagina",
+              "Sample collected from vaginal wall",
+              "Sent to laboratory for culture",
+              "Non-invasive procedure",
+              "Results available in 2-3 days"
+            ],
+            "whenToDo": [
+              "When vaginal infection is suspected",
+              "Recurrent miscarriage workup",
+              "Before IVF procedure",
+              "When abnormal discharge present"
+            ],
+            "whoIsThisTestFor": [
+              "Women with vaginal symptoms",
+              "Those with recurrent infections",
+              "Patients with recurrent miscarriage",
+              "Before ART procedures"
+            ],
+            "precautions": [
+              "Avoid douching 24 hours before",
+              "No sexual intercourse 24 hours before",
+              "Avoid vaginal medications 24 hours before"
+            ],
+            "avoidIf": [
+              "During menstruation"
+            ]
+          }
+        },
+        {
+          "type": "heading",
+          "title": "Blood Sugar Testing",
+          "icon": "bloodtype",
+          "content": "Glucose level evaluation",
+          "testDetails": {
+            "howToDo": [
+              "Fasting blood sample collected after 8-10 hours fast",
+              "Then glucose drink given",
+              "Second sample collected after 2 hours",
+              "Both samples analyzed for glucose levels"
+            ],
+            "whenToDo": [
+              "When PCOS is suspected",
+              "For women with weight gain",
+              "Family history of diabetes",
+              "Before fertility treatment in high-risk patients"
+            ],
+            "whoIsThisTestFor": [
+              "Women with PCOS",
+              "Those with irregular periods",
+              "Women with weight issues",
+              "History of gestational diabetes"
+            ],
+            "precautions": [
+              "Fast for 8-10 hours",
+              "No eating or drinking except water",
+              "Inform if on medications affecting glucose",
+              "Avoid strenuous exercise before test"
+            ],
+            "avoidIf": [
+              "During acute illness"
+            ]
+          }
+        }
+      ],
+      "tags": [],
+      "tabs": []
     }
   }
 }

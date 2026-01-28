@@ -13,20 +13,73 @@ enum ContentBlockType {
   image,
 }
 
+/// Represents a tab in a blog article with test information
+class BlogTab {
+  final String title;
+  final String icon; // Flutter icon name
+  final String safeStatus; // "Safe to continue" message
+  final String doText; // What to do
+  final String dontText; // What not to do
+  final String whoShouldAvoid; // Who should avoid this activity
+  final String redFlags; // Warning signs to watch for
+
+  BlogTab({
+    required this.title,
+    required this.icon,
+    required this.safeStatus,
+    required this.doText,
+    required this.dontText,
+    required this.whoShouldAvoid,
+    required this.redFlags,
+  });
+
+  /// Factory constructor to create BlogTab from Firestore document
+  factory BlogTab.fromMap(Map<String, dynamic> map) {
+    return BlogTab(
+      title: map['title'] as String? ?? '',
+      icon: map['icon'] as String? ?? 'sports_volleyball',
+      safeStatus: map['safeStatus'] as String? ?? '',
+      doText: map['doText'] as String? ?? '',
+      dontText: map['dontText'] as String? ?? '',
+      whoShouldAvoid: map['whoShouldAvoid'] as String? ?? '',
+      redFlags: map['redFlags'] as String? ?? '',
+    );
+  }
+
+  /// Convert to map for potential future use
+  Map<String, dynamic> toMap() {
+    return {
+      'title': title,
+      'icon': icon,
+      'safeStatus': safeStatus,
+      'doText': doText,
+      'dontText': dontText,
+      'whoShouldAvoid': whoShouldAvoid,
+      'redFlags': redFlags,
+    };
+  }
+}
+
 /// Represents a single content block in a blog article
 class ContentBlock {
   final ContentBlockType type;
   final String content;
+  final String title;
+  final String icon;
   final List<String>? bulletPoints;
   final String? imageUrl;
   final String? imageCaption;
+  final TestDetails? testDetails;
 
   ContentBlock({
     required this.type,
     required this.content,
+    required this.title,
+    required this.icon,
     this.bulletPoints,
     this.imageUrl,
     this.imageCaption,
+    this.testDetails,
   });
 
   /// Factory constructor to create ContentBlock from Firestore document
@@ -37,12 +90,21 @@ class ContentBlock {
       orElse: () => ContentBlockType.paragraph,
     );
 
+    // Parse test details if present
+    TestDetails? testDetails;
+    if (map['testDetails'] != null) {
+      testDetails = TestDetails.fromMap(map['testDetails'] as Map<String, dynamic>);
+    }
+
     return ContentBlock(
       type: type,
       content: map['content'] as String? ?? '',
+      title: map['title'] as String? ?? '',
+      icon: map['icon'] as String? ?? 'sports_volleyball',
       bulletPoints: List<String>.from(map['bulletPoints'] as List? ?? []),
       imageUrl: map['imageUrl'] as String?,
       imageCaption: map['imageCaption'] as String?,
+      testDetails: testDetails,
     );
   }
 
@@ -51,9 +113,49 @@ class ContentBlock {
     return {
       'type': type.toString().split('.').last,
       'content': content,
+      'title': title,
+      'icon': icon,
       'bulletPoints': bulletPoints,
       'imageUrl': imageUrl,
       'imageCaption': imageCaption,
+      'testDetails': testDetails?.toMap(),
+    };
+  }
+}
+
+/// Represents test details with detailed information arrays
+class TestDetails {
+  final List<String> howToDo;
+  final List<String> whenToDo;
+  final List<String> whoIsThisTestFor;
+  final List<String> precautions;
+  final List<String> avoidIf;
+
+  TestDetails({
+    required this.howToDo,
+    required this.whenToDo,
+    required this.whoIsThisTestFor,
+    required this.precautions,
+    required this.avoidIf,
+  });
+
+  factory TestDetails.fromMap(Map<String, dynamic> map) {
+    return TestDetails(
+      howToDo: List<String>.from(map['howToDo'] as List? ?? []),
+      whenToDo: List<String>.from(map['whenToDo'] as List? ?? []),
+      whoIsThisTestFor: List<String>.from(map['whoIsThisTestFor'] as List? ?? []),
+      precautions: List<String>.from(map['precautions'] as List? ?? []),
+      avoidIf: List<String>.from(map['avoidIf'] as List? ?? []),
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'howToDo': howToDo,
+      'whenToDo': whenToDo,
+      'whoIsThisTestFor': whoIsThisTestFor,
+      'precautions': precautions,
+      'avoidIf': avoidIf,
     };
   }
 }
@@ -70,6 +172,7 @@ class Blog {
   final String? coverImageUrl;
   final List<ContentBlock> contentBlocks;
   final List<String>? tags;
+  final List<BlogTab>? tabs; // Tabs with test information
 
   Blog({
     required this.id,
@@ -82,6 +185,7 @@ class Blog {
     this.coverImageUrl,
     required this.contentBlocks,
     this.tags,
+    this.tabs,
   });
 
   /// Factory constructor to create Blog from Firestore document
@@ -100,6 +204,10 @@ class Blog {
               .toList() ??
           [],
       tags: List<String>.from(map['tags'] as List? ?? []),
+      tabs: (map['tabs'] as List?)
+              ?.map((item) => BlogTab.fromMap(item as Map<String, dynamic>))
+              .toList() ??
+          [],
     );
   }
 
@@ -126,6 +234,7 @@ class Blog {
       'coverImageUrl': coverImageUrl,
       'contentBlocks': contentBlocks.map((c) => c.toMap()).toList(),
       'tags': tags,
+      'tabs': tabs?.map((t) => t.toMap()).toList(),
     };
   }
 }
