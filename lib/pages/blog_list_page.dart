@@ -3,12 +3,6 @@ import 'package:migynaeblogs/models/blog_models.dart';
 import 'package:migynaeblogs/services/blog_service.dart';
 import 'package:migynaeblogs/pages/blog_detail_page.dart';
 
-/// Single pregnancy blog display page
-/// 
-/// Displays the main pregnancy guide blog with:
-/// - Cover image and title
-/// - Blog description
-/// - Tap to read full article
 class BlogListPage extends StatefulWidget {
   const BlogListPage({Key? key}) : super(key: key);
 
@@ -24,11 +18,8 @@ class _BlogListPageState extends State<BlogListPage> {
   @override
   void initState() {
     super.initState();
-    // Fetch all blogs
     _blogsFuture = _blogService.getAllBlogs();
-    _searchController.addListener(() {
-      setState(() {});
-    });
+    _searchController.addListener(() => setState(() {}));
   }
 
   @override
@@ -40,184 +31,113 @@ class _BlogListPageState extends State<BlogListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FutureBuilder<List<Blog>>(
-        future: _blogsFuture,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
-          }
+      backgroundColor: const Color(0xFFFEF9F7),
+      body: SafeArea(
+        child: FutureBuilder<List<Blog>>(
+          future: _blogsFuture,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            }
 
-          if (snapshot.hasError) {
-            return Center(
+            if (snapshot.hasError) {
+              return const Center(
+                child: Text(
+                  'Error loading blogs',
+                  style: TextStyle(color: Color(0xFF696969)),
+                ),
+              );
+            }
+
+            final blogs = snapshot.data ?? [];
+
+            final query = _searchController.text.toLowerCase();
+            final filteredBlogs = query.isEmpty
+                ? blogs
+                : blogs.where((blog) {
+                    return blog.title.toLowerCase().contains(query) ||
+                        blog.description.toLowerCase().contains(query);
+                  }).toList();
+
+            return SingleChildScrollView(
+              padding: const EdgeInsets.all(16),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Icon(Icons.error_outline, size: 48, color: Colors.red),
-                  const SizedBox(height: 16),
-                  Text('Error loading blogs: ${snapshot.error}'),
+                  /// PAGE TITLE
+                  const Text(
+                    'Pregnancy Blogs',
+                    style: TextStyle(
+                      fontSize: 28,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF696969),
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    'Expert advice for your journey',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: const Color(0xFF696969).withOpacity(0.7),
+                    ),
+                  ),
+
+                  const SizedBox(height: 20),
+
+                  /// SEARCH BAR 
+                  Container(
+                    height: 48,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(30),
+                      // ❌ removed borderColor
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.08),
+                          blurRadius: 10,
+                          offset: const Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: TextField(
+                      controller: _searchController,
+                      decoration: InputDecoration(
+                        hintText: 'Search blogs...',
+                        hintStyle: const TextStyle(color: Color(0xFF696969)),
+                        prefixIcon: const Icon(Icons.search),
+
+                        // 👇 THESE TWO LINES FIX THE PINK BORDER
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                          borderSide: BorderSide.none,
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                          borderSide: BorderSide.none,
+                        ),
+
+                        contentPadding: const EdgeInsets.symmetric(vertical: 12),
+                      ),
+                    ),
+                  ),
+
+
                   const SizedBox(height: 24),
-                  ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        _blogsFuture = _blogService.getAllBlogs();
-                      });
-                    },
-                    child: const Text('Retry'),
+
+                  /// BLOG LIST
+                  Column(
+                    children: filteredBlogs.map((blog) {
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 20),
+                        child: _buildBlogCard(context, blog),
+                      );
+                    }).toList(),
                   ),
                 ],
               ),
             );
-          }
-
-          final blogs = snapshot.data ?? [];
-          if (blogs.isEmpty) {
-            return const Center(
-              child: Text('No blogs found'),
-            );
-          }
-
-          // Filter blogs based on search query
-          final query = _searchController.text.toLowerCase();
-          final filteredBlogs = query.isEmpty
-              ? blogs
-              : blogs.where((blog) {
-                  final titleMatch = blog.title.toLowerCase().contains(query);
-                  final descMatch = blog.description.toLowerCase().contains(query);
-                  return titleMatch || descMatch;
-                }).toList();
-
-          return CustomScrollView(
-            slivers: [
-              // App Bar
-              SliverAppBar(
-                pinned: true,
-                elevation: 4,
-                backgroundColor: const Color(0xFFF06292),
-                foregroundColor: Colors.white,
-                shadowColor: const Color(0xFFF06292).withOpacity(0.4),
-                title: Row(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(6),
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.25),
-                        borderRadius: BorderRadius.circular(6),
-                      ),
-                      child: const Icon(Icons.favorite, size: 18, color: Colors.white),
-                    ),
-                    const SizedBox(width: 10),
-                    const Text('Pregnancy Blogs', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-                  ],
-                ),
-              ),
-              // Main Content
-              SliverToBoxAdapter(
-                child: SingleChildScrollView(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        // Header
-                        Text(
-                          'Pregnancy Blogs',
-                          style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey[800],
-                          ),
-                        ),
-                        const SizedBox(height: 4),
-                        Text(
-                          'Expert advice for your journey',
-                          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                            color: Colors.grey[600],
-                          ),
-                        ),
-                        const SizedBox(height: 20),
-
-                        // Search Bar
-                        TextField(
-                          controller: _searchController,
-                          decoration: InputDecoration(
-                            hintText: 'Search blogs...',
-                            prefixIcon: const Icon(Icons.search, color: Color(0xFFF06292)),
-                            suffixIcon: _searchController.text.isNotEmpty
-                                ? IconButton(
-                                    icon: const Icon(Icons.clear),
-                                    onPressed: () {
-                                      _searchController.clear();
-                                    },
-                                  )
-                                : null,
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12),
-                              borderSide: const BorderSide(
-                                color: Color(0xFFF06292),
-                                width: 2,
-                              ),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12),
-                              borderSide: const BorderSide(
-                                color: Color(0xFFF06292),
-                                width: 2,
-                              ),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12),
-                              borderSide: const BorderSide(
-                                color: Color(0xFFF06292),
-                                width: 2.5,
-                              ),
-                            ),
-                            filled: true,
-                            fillColor: Colors.grey[50],
-                            contentPadding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-                          ),
-                        ),
-                        const SizedBox(height: 24),
-
-                        // Blog Cards List
-                        if (filteredBlogs.isEmpty)
-                          Center(
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 32),
-                              child: Column(
-                                children: [
-                                  Icon(
-                                    Icons.search_off,
-                                    size: 48,
-                                    color: Colors.grey[400],
-                                  ),
-                                  const SizedBox(height: 16),
-                                  Text(
-                                    'No blogs found matching your search',
-                                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                      color: Colors.grey[600],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          )
-                        else
-                          Column(
-                            children: filteredBlogs.map((blog) {
-                              return Padding(
-                                padding: const EdgeInsets.only(bottom: 20),
-                                child: _buildBlogCard(context, blog),
-                              );
-                            }).toList(),
-                          ),
-                        const SizedBox(height: 32),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          );
-        },
+          },
+        ),
       ),
     );
   }
@@ -228,106 +148,81 @@ class _BlogListPageState extends State<BlogListPage> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => BlogDetailPage(blogId: blog.id),
+            builder: (_) => BlogDetailPage(blogId: blog.id),
           ),
         );
       },
       child: Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.1),
-              blurRadius: 8,
-              offset: const Offset(0, 4),
+              color: Colors.black.withOpacity(0.06),
+              blurRadius: 10,
+              offset: const Offset(0, 6),
             ),
           ],
         ),
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Cover Image
-              if (blog.coverImageUrl != null)
-                Image.network(
-                  blog.coverImageUrl!,
-                  height: 200,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) {
-                    return Container(
-                      height: 200,
-                      color: Colors.grey[300],
-                      child: const Center(
-                        child: Icon(Icons.image_not_supported),
-                      ),
-                    );
-                  },
-                )
-              else
-                Container(
-                  height: 200,
-                  color: Colors.grey[300],
-                  child: Center(
-                    child: Icon(
-                      Icons.article,
-                      size: 80,
-                      color: Colors.grey[600],
-                    ),
-                  ),
+              /// IMAGE
+              Image.network(
+                blog.coverImageUrl ?? '',
+                height: 190,
+                width: double.infinity,
+                fit: BoxFit.cover,
+                errorBuilder: (_, __, ___) => Container(
+                  height: 190,
+                  color: const Color(0xFFFCD5D4),
                 ),
+              ),
 
-              // Card Content
-              Container(
-                color: Colors.white,
+              /// CONTENT + ARROW (CENTER ALIGNED)
+              Padding(
                 padding: const EdgeInsets.all(16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text(
-                      blog.title,
-                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.grey[800],
-                        height: 1.3,
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    Text(
-                      blog.description,
-                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: Colors.grey[600],
-                        height: 1.5,
-                      ),
-                      maxLines: 3,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    const SizedBox(height: 12),
-                    Divider(color: Colors.grey[200]),
-                    const SizedBox(height: 8),
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.schedule,
-                          size: 16,
-                          color: const Color(0xFFF06292),
-                        ),
-                        const SizedBox(width: 6),
-                        Text(
-                          '${blog.readTimeMinutes} min read',
-                          style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                            color: Colors.grey[700],
-                            fontWeight: FontWeight.w500,
+                    /// TEXT
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            blog.title,
+                            style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                              color: Color(0xFF696969),
+                            ),
                           ),
-                        ),
-                        const Spacer(),
-                        Icon(
-                          Icons.arrow_forward,
-                          size: 18,
-                          color: const Color(0xFFF06292),
-                        ),
-                      ],
+                          const SizedBox(height: 8),
+                          Text(
+                            blog.description,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: const Color(0xFF696969)
+                                  .withOpacity(0.8),
+                              height: 1.5,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    const SizedBox(width: 12),
+
+                    /// RIGHT ARROW 
+                    const Icon(
+                      Icons.arrow_forward_ios,
+                      size: 16,
+                      color: Color(0xFFcf3476),
                     ),
                   ],
                 ),

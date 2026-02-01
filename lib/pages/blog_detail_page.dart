@@ -3,22 +3,17 @@ import 'package:intl/intl.dart';
 import 'package:migynaeblogs/models/blog_models.dart';
 import 'package:migynaeblogs/services/blog_service.dart';
 
-/// Blog detail page that displays a single blog article with expandable test cards
-/// 
-/// This page fetches blog content from Firestore on load and renders it
-/// with expandable content blocks representing different tests/activities.
-/// 
-/// The page displays:
-/// - Cover image
-/// - Title and description
-/// - Expandable cards for each test/activity
+/// COLOR THEME
+const kPrimaryPink = Color(0xFFCF3476);
+const kSoftPink = Color(0xFFFCD5D4);
+const kLavender = Color(0xFFE5CEE8);
+const kDarkGrey = Color(0xFF696969);
+const kLightCream = Color(0xFFFEF9F7);
+
 class BlogDetailPage extends StatefulWidget {
   final String blogId;
 
-  const BlogDetailPage({
-    Key? key,
-    required this.blogId,
-  }) : super(key: key);
+  const BlogDetailPage({Key? key, required this.blogId}) : super(key: key);
 
   @override
   State<BlogDetailPage> createState() => _BlogDetailPageState();
@@ -37,99 +32,70 @@ class _BlogDetailPageState extends State<BlogDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: kLightCream,
       body: FutureBuilder<Blog>(
         future: _blogFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
+            return const Center(child: CircularProgressIndicator());
           }
 
-          if (snapshot.hasError) {
-            return Center(
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Icon(
-                      Icons.error_outline,
-                      color: Colors.red,
-                      size: 48,
-                    ),
-                    const SizedBox(height: 16),
-                    Text(
-                      'Error loading blog',
-                      style: Theme.of(context).textTheme.headlineSmall,
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      snapshot.error.toString(),
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: Colors.grey[600],
-                          ),
-                    ),
-                    const SizedBox(height: 24),
-                    ElevatedButton(
-                      onPressed: () {
-                        setState(() {
-                          _blogFuture =
-                              _blogService.getBlogById(widget.blogId);
-                        });
-                      },
-                      child: const Text('Retry'),
-                    ),
-                  ],
-                ),
-              ),
-            );
+          if (snapshot.hasError || !snapshot.hasData) {
+            return const Center(child: Text('Error loading blog'));
           }
 
-          final blog = snapshot.data;
-          if (blog == null) {
-            return const Center(
-              child: Text('Blog not found'),
-            );
-          }
+          final blog = snapshot.data!;
 
           return CustomScrollView(
             slivers: [
-              // App bar with cover image
               SliverAppBar(
                 expandedHeight: 280,
                 pinned: true,
-                backgroundColor: const Color(0xFFF06292),
-                elevation: 4,
-                shadowColor: const Color(0xFFF06292).withOpacity(0.4),
+
+                backgroundColor: Colors.transparent,
+                surfaceTintColor: Colors.transparent,
+                elevation: 0,
+                scrolledUnderElevation: 0,
+                shadowColor: Colors.transparent,
+                forceMaterialTransparency: true,
+
+                leading: _circleButton(
+                  icon: Icons.arrow_back,
+                  onTap: () => Navigator.pop(context),
+                ),
+
+                actions: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 12),
+                    child: _circleButton(
+                      icon: Icons.share,
+                      onTap: () {
+                        // TODO: implement share later
+                      },
+                    ),
+                  ),
+                ],
+
                 flexibleSpace: FlexibleSpaceBar(
-                  background: blog.coverImageUrl != null
-                      ? Image.network(
-                          blog.coverImageUrl!,
-                          fit: BoxFit.cover,
-                          errorBuilder: (context, error, stackTrace) {
-                            return Container(
-                              color: Colors.grey[300],
-                              child: const Center(
-                                child: Icon(Icons.image_not_supported),
-                              ),
-                            );
-                          },
-                        )
-                      : Container(
-                          color: Colors.grey[300],
-                          child: Center(
-                            child: Icon(
-                              Icons.article,
-                              size: 80,
-                              color: Colors.grey[600],
-                            ),
-                          ),
-                        ),
+                  collapseMode: CollapseMode.parallax,
+                  background: Image.network(
+                    blog.coverImageUrl ?? '',
+                    fit: BoxFit.cover,
+                    errorBuilder: (_, __, ___) => Container(
+                      color: kSoftPink,
+                      alignment: Alignment.center,
+                      child: const Icon(
+                        Icons.image,
+                        size: 60,
+                        color: kPrimaryPink,
+                      ),
+                    ),
+                  ),
                 ),
               ),
-              // Blog content - Title and Description
+
+
+              /// CONTENT
               SliverToBoxAdapter(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -137,73 +103,91 @@ class _BlogDetailPageState extends State<BlogDetailPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const SizedBox(height: 24),
-                      // Title
+
+                      /// TITLE
                       Text(
                         blog.title,
-                        style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineMedium
+                            ?.copyWith(
                               fontWeight: FontWeight.bold,
+                              color: kDarkGrey,
                               height: 1.3,
                             ),
                       ),
-                      const SizedBox(height: 16),
-                      // Metadata (date, read time)
-                      _buildMetadata(context, blog),
-                      const SizedBox(height: 24),
-                      // Description with border
-                      Container(
-                        padding: const EdgeInsets.all(14),
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: const Color(0xFFF06292),
-                            width: 2,
+
+                      const SizedBox(height: 12),
+
+                      /// META
+                      Row(
+                        children: [
+                          _metaChip(
+                            Icons.calendar_today,
+                            DateFormat('MMM d, yyyy')
+                                .format(blog.publishedDate),
                           ),
-                          borderRadius: BorderRadius.circular(8),
-                          color: const Color(0xFFF06292).withOpacity(0.05),
-                        ),
-                        child: Text(
-                          blog.description,
-                          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                                color: Colors.grey[800],
-                                height: 1.6,
-                              ),
-                        ),
+                          const SizedBox(width: 12),
+                          _metaChip(
+                            Icons.schedule,
+                            '${blog.readTimeMinutes} min read',
+                          ),
+                        ],
                       ),
-                      const SizedBox(height: 32),
-                      // Tests Header
+
+                      const SizedBox(height: 24),
+
+                      /// DESCRIPTION
                       Text(
-                        'Available Tests',
-                        style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey[800],
-                        ),
+                        blog.description,
+                        style:
+                            Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                  color: kDarkGrey,
+                                  height: 1.7,
+                                ),
                       ),
-                      const SizedBox(height: 16),
+
+                      const SizedBox(height: 32),
+
+                      /// SECTION TITLE
+                      Text(
+                        'Check what/how much can you do?',
+                        style:
+                            Theme.of(context).textTheme.headlineSmall?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                  color: kDarkGrey,
+                                ),
+                      ),
+
+                      const SizedBox(height: 20),
                     ],
                   ),
                 ),
               ),
-              // Content blocks as grid tiles
+
+              /// GRID TILES
               SliverPadding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 sliver: SliverGrid(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  gridDelegate:
+                      const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    childAspectRatio: 1.1,
-                    crossAxisSpacing: 12,
-                    mainAxisSpacing: 12,
+                    childAspectRatio: 1.05,
+                    crossAxisSpacing: 16,
+                    mainAxisSpacing: 16,
                   ),
                   delegate: SliverChildBuilderDelegate(
                     (context, index) {
                       final block = blog.contentBlocks[index];
-                      return _buildTestTile(context, block, index);
+                      return _buildTile(context, block);
                     },
                     childCount: blog.contentBlocks.length,
                   ),
                 ),
               ),
-              // Bottom padding
-              SliverToBoxAdapter(
-                child: const SizedBox(height: 32),
+
+              const SliverToBoxAdapter(
+                child: SizedBox(height: 40),
               ),
             ],
           );
@@ -212,114 +196,72 @@ class _BlogDetailPageState extends State<BlogDetailPage> {
     );
   }
 
-  /// Build metadata section (date, read time)
-  Widget _buildMetadata(BuildContext context, Blog blog) {
-    return Row(
-      children: [
-        // Published date
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-          decoration: BoxDecoration(
-            color: const Color(0xFFF06292).withOpacity(0.1),
-            borderRadius: BorderRadius.circular(6),
-            border: Border.all(
-              color: const Color(0xFFF06292),
-              width: 1.5,
+  /// META CHIP
+  Widget _metaChip(IconData icon, String text) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+      decoration: BoxDecoration(
+        color: kSoftPink,
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Row(
+        children: [
+          Icon(icon, size: 14, color: kPrimaryPink),
+          const SizedBox(width: 6),
+          Text(
+            text,
+            style: const TextStyle(
+              color: kDarkGrey,
+              fontWeight: FontWeight.w600,
+              fontSize: 12,
             ),
           ),
-          child: Row(
-            children: [
-              const Icon(
-                Icons.calendar_today,
-                size: 16,
-                color: Color(0xFFF06292),
-              ),
-              const SizedBox(width: 6),
-              Text(
-                DateFormat('MMM d, yyyy').format(blog.publishedDate),
-                style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  color: const Color(0xFFF06292),
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(width: 12),
-        // Read time
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-          decoration: BoxDecoration(
-            color: const Color(0xFFF06292).withOpacity(0.1),
-            borderRadius: BorderRadius.circular(6),
-            border: Border.all(
-              color: const Color(0xFFF06292),
-              width: 1.5,
-            ),
-          ),
-          child: Row(
-            children: [
-              const Icon(
-                Icons.schedule,
-                size: 16,
-                color: Color(0xFFF06292),
-              ),
-              const SizedBox(width: 6),
-              Text(
-                '${blog.readTimeMinutes} min read',
-                style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  color: const Color(0xFFF06292),
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
-  /// Build test tile for grid display
-  Widget _buildTestTile(BuildContext context, ContentBlock block, int index) {
+  /// TILE
+  Widget _buildTile(BuildContext context, ContentBlock block) {
     return GestureDetector(
       onTap: () {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => TestDetailPage(block: block),
+            builder: (_) => TestDetailPage(block: block),
           ),
         );
       },
       child: Container(
+        padding: const EdgeInsets.all(18),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(
-            color: const Color(0xFFF06292),
-            width: 1.5,
-          ),
           color: Colors.white,
+          borderRadius: BorderRadius.circular(18),
           boxShadow: [
             BoxShadow(
-              color: const Color(0xFFF06292).withOpacity(0.1),
-              blurRadius: 4,
-              offset: const Offset(0, 2),
+              color: Colors.black.withOpacity(0.06),
+              blurRadius: 14,
+              offset: const Offset(0, 8),
             ),
           ],
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            _getIconFromName(block.icon),
-            const SizedBox(height: 12),
+            Icon(
+              _iconMap[block.icon] ?? Icons.favorite,
+              size: 42,
+              color: kPrimaryPink,
+            ),
+            const SizedBox(height: 14),
             Text(
               block.title,
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                fontWeight: FontWeight.bold,
-                color: Colors.grey[800],
+              style: const TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w600,
+                color: kDarkGrey,
               ),
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
             ),
           ],
         ),
@@ -327,52 +269,44 @@ class _BlogDetailPageState extends State<BlogDetailPage> {
     );
   }
 
-  /// Convert icon name to Flutter icon
-  Widget _getIconFromName(String iconName) {
-    final iconMap = {
-      // Pregnancy activities
-      'directions_walk': Icons.directions_walk,
-      'restaurant': Icons.restaurant,
-      'directions_run': Icons.directions_run,
-      'stairs': Icons.stairs,
-      'cleaning_services': Icons.cleaning_services,
-      'favorite': Icons.favorite,
-      'directions_car': Icons.directions_car,
-      'hotel': Icons.hotel,
-      'sports_volleyball': Icons.sports_volleyball,
-      'shopping_cart': Icons.shopping_cart,
-      'work': Icons.work,
-      'sports_gymnastics': Icons.sports_gymnastics,
-      'fitness_center': Icons.fitness_center,
-      'ac_unit': Icons.ac_unit,
-      'agriculture': Icons.agriculture,
-      'spa': Icons.spa,
-      // Fertility tests
-      'science': Icons.science,
-      'medical_services': Icons.medical_services,
-      'visibility': Icons.visibility,
-      'healing': Icons.healing,
-      'bloodtype': Icons.bloodtype,
-      'vaccines': Icons.vaccines,
-      'psychology': Icons.psychology,
-      'health_and_safety': Icons.health_and_safety,
-      'monitor_heart': Icons.monitor_heart,
-      'favorite_border': Icons.favorite_border,
-      'info': Icons.info,
-      'dataset': Icons.dataset,
-      'analytics': Icons.analytics,
-      'assignment': Icons.assignment,
-    };
-
-    return Icon(
-      iconMap[iconName] ?? Icons.science,
-      size: 24,
-      color: const Color(0xFFF06292),
+  /// CIRCLE BUTTON
+  Widget _circleButton({
+    required IconData icon,
+    required VoidCallback onTap,
+  }) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        margin: const EdgeInsets.all(8),
+        width: 38,
+        height: 38,
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          shape: BoxShape.circle,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black12,
+              blurRadius: 6,
+            ),
+          ],
+        ),
+        child: Icon(icon, color: kPrimaryPink, size: 20),
+      ),
     );
   }
 }
 
-/// Test Detail Page - Shows detailed information for a specific test
+/// ICON MAP
+final Map<String, IconData> _iconMap = {
+  'restaurant': Icons.restaurant,
+  'directions_walk': Icons.directions_walk,
+  'directions_run': Icons.directions_run,
+  'stairs': Icons.stairs,
+  'fitness_center': Icons.fitness_center,
+  'spa': Icons.spa,
+};
+
+/// TEST DETAIL PAGE (UNCHANGED LOGIC – POLISHED APPBAR)
 class TestDetailPage extends StatelessWidget {
   final ContentBlock block;
 
@@ -383,191 +317,152 @@ class TestDetailPage extends StatelessWidget {
     final details = block.testDetails;
 
     return Scaffold(
+      backgroundColor: kLightCream,
       appBar: AppBar(
-        backgroundColor: const Color(0xFFF06292),
-        title: Text(block.title),
-        elevation: 4,
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Test Icon and Title
-              Center(
-                child: Column(
-                  children: [
-                    _getIconFromNameStatic(block.icon, size: 64),
-                    const SizedBox(height: 16),
-                    Text(
-                      block.title,
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 32),
-
-              if (details != null) ...[
-                // How to Do
-                _buildDetailSection(
-                  context,
-                  'How to Do',
-                  details.howToDo,
-                  Icons.check_circle,
-                  const Color(0xFF4CAF50),
-                ),
-                const SizedBox(height: 20),
-
-                // When to Do
-                _buildDetailSection(
-                  context,
-                  'When to Do',
-                  details.whenToDo,
-                  Icons.access_time,
-                  const Color(0xFF4CAF50),
-                ),
-                const SizedBox(height: 20),
-
-                // Who is This Test For
-                _buildDetailSection(
-                  context,
-                  'Who is This Test For',
-                  details.whoIsThisTestFor,
-                  Icons.people,
-                  const Color(0xFF4CAF50),
-                ),
-                const SizedBox(height: 20),
-
-                // Precautions
-                _buildDetailSection(
-                  context,
-                  'Precautions',
-                  details.precautions,
-                  Icons.warning,
-                  const Color(0xFFFF9800),
-                ),
-                const SizedBox(height: 20),
-
-                // Avoid If
-                _buildDetailSection(
-                  context,
-                  'Avoid If',
-                  details.avoidIf,
-                  Icons.flag,
-                  const Color(0xFFF44336),
-                ),
-              ],
-              const SizedBox(height: 32),
-            ],
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        centerTitle: true,
+        surfaceTintColor: Colors.transparent,
+        scrolledUnderElevation: 0,
+        title: Text(
+          block.title,
+          style: const TextStyle(
+            color: kDarkGrey,
+            fontWeight: FontWeight.w600,
           ),
         ),
+        leading: _circleButton(
+          icon: Icons.arrow_back,
+          onTap: () => Navigator.pop(context),
+        ),
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16),
+        child: details == null
+            ? const SizedBox()
+            : Column(
+                children: [
+                  if (details.howToDo.isNotEmpty)
+                    _detailCard(
+                      bg: const Color(0xFFE9F6EA),
+                      border: const Color(0xFF9FD3A7),
+                      icon: Icons.check_circle,
+                      iconColor: const Color(0xFF4CAF50),
+                      title: 'How to do',
+                      text: details.howToDo.join('\n• '),
+                    ),
+                  if (details.whenToDo.isNotEmpty)
+                    _detailCard(
+                      bg: const Color(0xFFE9F6EA),
+                      border: const Color(0xFF9FD3A7),
+                      icon: Icons.thumb_up,
+                      iconColor: const Color(0xFF4CAF50),
+                      title: 'When to do',
+                      text: details.whenToDo.join('\n• '),
+                    ),
+                  if (details.whoIsThisTestFor.isNotEmpty)
+                    _detailCard(
+                      bg: const Color(0xFFFFEFEF),
+                      border: const Color(0xFFF3B5C0),
+                      icon: Icons.person,
+                      iconColor: kPrimaryPink,
+                      title: 'Who is it for',
+                      text: details.whoIsThisTestFor.join('\n• '),
+                    ),
+                  if (details.precautions.isNotEmpty)
+                    _detailCard(
+                      bg: const Color(0xFFFFEFEF),
+                      border: const Color(0xFFF3B5C0),
+                      icon: Icons.warning_amber_rounded,
+                      iconColor: kPrimaryPink,
+                      title: 'Precautions',
+                      text: details.precautions.join('\n• '),
+                    ),
+                  if (details.avoidIf.isNotEmpty)
+                    _detailCard(
+                      bg: const Color(0xFFFFEFEF),
+                      border: const Color(0xFFF3B5C0),
+                      icon: Icons.person_off,
+                      iconColor: kPrimaryPink,
+                      title: 'Avoid if',
+                      text: details.avoidIf.join('\n• '),
+                    ),
+                ],
+              ),
       ),
     );
   }
 
-  Widget _buildDetailSection(
-    BuildContext context,
-    String title,
-    List<String> items,
-    IconData icon,
-    Color color,
-  ) {
+  /// CARD
+  Widget _detailCard({
+    required Color bg,
+    required Color border,
+    required IconData icon,
+    required Color iconColor,
+    required String title,
+    required String text,
+  }) {
     return Container(
-      decoration: BoxDecoration(
-        border: Border.all(color: color.withOpacity(0.3), width: 1),
-        borderRadius: BorderRadius.circular(8),
-        color: color.withOpacity(0.05),
-      ),
+      width: double.infinity,
+      margin: const EdgeInsets.only(bottom: 16),
       padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: bg,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: border),
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
-              Icon(icon, color: color, size: 24),
-              const SizedBox(width: 12),
+              Icon(icon, color: iconColor),
+              const SizedBox(width: 8),
               Text(
                 title,
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: color,
+                style: TextStyle(
+                  color: iconColor,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 12),
-          ...items.map((item) => Padding(
-            padding: const EdgeInsets.only(bottom: 8, left: 36),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  '• ',
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    color: color,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Expanded(
-                  child: Text(
-                    item,
-                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      color: Colors.grey[800],
-                      height: 1.5,
-                    ),
-                  ),
-                ),
-              ],
+          const SizedBox(height: 10),
+          Text(
+            '• $text'.replaceAll('\n• •', '\n•'), // fix double bullets
+            style: const TextStyle(
+              color: kDarkGrey,
+              fontSize: 14,
+              height: 1.5,
             ),
-          )).toList(),
+          ),
         ],
       ),
     );
   }
 
-  Icon _getIconFromNameStatic(String iconName, {double size = 24}) {
-    final iconMap = {
-      'directions_walk': Icons.directions_walk,
-      'restaurant': Icons.restaurant,
-      'directions_run': Icons.directions_run,
-      'stairs': Icons.stairs,
-      'cleaning_services': Icons.cleaning_services,
-      'favorite': Icons.favorite,
-      'directions_car': Icons.directions_car,
-      'hotel': Icons.hotel,
-      'sports_volleyball': Icons.sports_volleyball,
-      'shopping_cart': Icons.shopping_cart,
-      'work': Icons.work,
-      'sports_gymnastics': Icons.sports_gymnastics,
-      'fitness_center': Icons.fitness_center,
-      'ac_unit': Icons.ac_unit,
-      'agriculture': Icons.agriculture,
-      'spa': Icons.spa,
-      'science': Icons.science,
-      'medical_services': Icons.medical_services,
-      'visibility': Icons.visibility,
-      'healing': Icons.healing,
-      'bloodtype': Icons.bloodtype,
-      'vaccines': Icons.vaccines,
-      'psychology': Icons.psychology,
-      'health_and_safety': Icons.health_and_safety,
-      'monitor_heart': Icons.monitor_heart,
-      'favorite_border': Icons.favorite_border,
-      'info': Icons.info,
-      'dataset': Icons.dataset,
-      'analytics': Icons.analytics,
-      'assignment': Icons.assignment,
-    };
-
-    return Icon(
-      iconMap[iconName] ?? Icons.science,
-      size: size,
-      color: const Color(0xFFF06292),
+  /// BACK BUTTON
+  Widget _circleButton({
+    required IconData icon,
+    required VoidCallback onTap,
+  }) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        margin: const EdgeInsets.all(8),
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          shape: BoxShape.circle,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black12,
+              blurRadius: 6,
+            ),
+          ],
+        ),
+        child: Icon(icon, color: kDarkGrey),
+      ),
     );
   }
 }
